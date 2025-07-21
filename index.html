@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D Group Job Application for Women</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #fdfcfb, #e2d1c3);
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 700px;
+      margin: 50px auto;
+      background: #fffaf0;
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #5a189a;
+    }
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: 600;
+      color: #444;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+    button {
+      margin-top: 30px;
+      width: 100%;
+      background-color: #9d4edd;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #7b2cbf;
+    }
+    .thank-you {
+      display: none;
+      text-align: center;
+      margin-top: 25px;
+      color: #2e7d32;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+    .footer-message {
+      margin-top: 40px;
+      font-size: 1rem;
+      text-align: center;
+      color: #6a1b9a;
+      font-style: italic;
+    }
+    .language-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .language-toggle button {
+      background: #f0d9ff;
+      border: 1px solid #ccc;
+      padding: 8px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .language-toggle button.active {
+      background-color: #c77dff;
+      color: white;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 id="formTitle">D Group Job Application</h2>
+
+    <div class="language-toggle">
+      <button onclick="switchLanguage('en')" class="active">English</button>
+      <button onclick="switchLanguage('hi')">हिंदी</button>
+    </div>
+
+    <form id="jobForm">
+      <label id="nameLabel" for="name">Full Name:</label>
+      <input type="text" id="name" required />
+
+      <label id="ageLabel" for="age">Age:</label>
+      <input type="number" id="age" min="18" required />
+
+      <label id="phoneLabel" for="phone">Phone Number:</label>
+      <input type="tel" id="phone" pattern="[0-9]{10}" required />
+
+      <label id="jobLabel" for="job">Job Type:</label>
+      <select id="job" required>
+        <option value="">-- Select --</option>
+        <option value="Sweeper">Sweeper</option>
+        <option value="Watchman">Watchman</option>
+        <option value="Helper">Helper</option>
+        <option value="Gardener">Gardener</option>
+      </select>
+
+      <label id="locationLabel" for="location">Preferred Work Location:</label>
+      <input type="text" id="location" required />
+
+      <button type="submit" id="submitButton">Submit Application</button>
+    </form>
+
+    <div class="thank-you" id="thankYou">Thank you! Your application has been received.</div>
+
+    <div class="footer-message" id="footerMessage">
+      💜 अगर आपके घर में माहौल अच्छा नहीं है या ससुराल में दुख है, तो डरिये मत। आप अकेली नहीं हैं। यह फॉर्म एक नयी शुरुआत का पहला कदम हो सकता है। 💜
+    </div>
+  </div>
+
+  <script>
+    const translations = {
+      en: {
+        formTitle: "D Group Job Application",
+        nameLabel: "Full Name:",
+        ageLabel: "Age:",
+        phoneLabel: "Phone Number:",
+        jobLabel: "Job Type:",
+        locationLabel: "Preferred Work Location:",
+        submitButton: "Submit Application",
+        thankYou: "Thank you! Your application has been received.",
+        footerMessage: "💜 If your home is toxic or in-laws are abusive, don’t be afraid. You are not alone. This form can be your first step to a new beginning. 💜"
+      },
+      hi: {
+        formTitle: "डी ग्रुप नौकरी आवेदन",
+        nameLabel: "पूरा नाम:",
+        ageLabel: "उम्र:",
+        phoneLabel: "फोन नंबर:",
+        jobLabel: "नौकरी का प्रकार:",
+        locationLabel: "काम की पसंदीदा जगह:",
+        submitButton: "आवेदन सबमिट करें",
+        thankYou: "धन्यवाद! आपका आवेदन प्राप्त हो गया है।",
+        footerMessage: "💜 अगर आपके घर में माहौल अच्छा नहीं है या ससुराल में दुख है, तो डरिये मत। आप अकेली नहीं हैं। यह फॉर्म एक नयी शुरुआत का पहला कदम हो सकता है। 💜"
+      }
+    };
+
+    function switchLanguage(lang) {
+      const t = translations[lang];
+      document.getElementById("formTitle").innerText = t.formTitle;
+      document.getElementById("nameLabel").innerText = t.nameLabel;
+      document.getElementById("ageLabel").innerText = t.ageLabel;
+      document.getElementById("phoneLabel").innerText = t.phoneLabel;
+      document.getElementById("jobLabel").innerText = t.jobLabel;
+      document.getElementById("locationLabel").innerText = t.locationLabel;
+      document.getElementById("submitButton").innerText = t.submitButton;
+      document.getElementById("thankYou").innerText = t.thankYou;
+      document.getElementById("footerMessage").innerText = t.footerMessage;
+
+      const buttons = document.querySelectorAll('.language-toggle button');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`.language-toggle button[onclick*="${lang}"]`).classList.add('active');
+    }
+
+    document.getElementById('jobForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const data = {
+        name: document.getElementById('name').value,
+        age: document.getElementById('age').value,
+        phone: document.getElementById('phone').value,
+        job: document.getElementById('job').value,
+        location: document.getElementById('location').value
+      };
+
+      localStorage.setItem('jobApplicationData', JSON.stringify(data));
+
+      document.getElementById('jobForm').style.display = 'none';
+      document.getElementById('thankYou').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
